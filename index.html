@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Landing Page -->
+    <div id="homePage" class="page active">
+      <h1>Expense Tracker</h1>
+      <button onclick="navigateTo('addExpensePage')">Add Expense</button>
+      <button onclick="navigateTo('summaryPage')">View Summary</button>
+      <button onclick="navigateTo('searchPage')">Search Expenses</button>
+      <button onclick="navigateTo('pdfDownloadPage')">Download PDF</button>
+    </div>
+
+    <!-- Add Expense Page -->
+    <div id="addExpensePage" class="page">
+      <h2>Add Expense</h2>
+      <form id="addExpenseForm">
+        <input type="date" id="date" required>
+        <input type="number" id="amount" placeholder="Amount" required>
+        <input type="text" id="description" placeholder="Description" required>
+        <button type="button" id="addExpenseBtn">Add Expense</button>
+        <p id="addMessage"></p>
+      </form>
+      <button onclick="navigateTo('homePage')">Go to Home</button>
+    </div>
+
+    <!-- Summary Page -->
+    <div id="summaryPage" class="page">
+      <h2>Expense Summary</h2>
+      <table id="summaryTable">
+        <thead>
+          <tr>
+            <th>Select</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <button id="deleteSelectedBtn">Delete Selected</button>
+      <p id="summaryMessage"></p>
+      <button onclick="navigateTo('homePage')">Go to Home</button>
+    </div>
+
+    <!-- Search Page -->
+    <div id="searchPage" class="page">
+      <h2>Search Expenses</h2>
+      <input type="text" id="searchInput" placeholder="Search by Date or Description">
+      <button id="searchBtn">Search</button>
+      <table id="searchResultsTable">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <p id="searchMessage"></p>
+      <button onclick="navigateTo('homePage')">Go to Home</button>
+    </div>
+
+    <!-- Download PDF Page -->
+    <div id="pdfDownloadPage" class="page">
+      <h2>Download PDF</h2>
+      <input type="date" id="fromDate">
+      <input type="date" id="toDate">
+      <button id="generatePDF">Generate PDF</button>
+      <p id="downloadMessage"></p>
+      <button onclick="navigateTo('homePage')">Go to Home</button>
+    </div>
+  </div>
+  
+  <script src="app.js"></script>
+</body>
+</html>
